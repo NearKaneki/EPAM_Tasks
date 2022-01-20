@@ -15,16 +15,21 @@ namespace _2._1._2._CUSTOM_PAINT.Classes
         static public void Start()
         {
             _currentUser = ChangeUser();
+            Console.Clear();
             while (_action != 5)
             {
                 GetAction();
                 DoAction();
+                Console.WriteLine("Для продолжения нажмите любую клавишу...");
+                Console.ReadKey();
+                Console.Clear();
             }
 
         }
 
         static private User ChangeUser()
         {
+            Console.Clear();
             Console.WriteLine("Введите имя пользователя");
             string name = Console.ReadLine();
             int ind = _users.FindIndex(x => x.Name == name);

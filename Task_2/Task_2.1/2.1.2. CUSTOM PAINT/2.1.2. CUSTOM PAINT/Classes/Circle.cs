@@ -12,8 +12,11 @@ namespace _2._1._2._CUSTOM_PAINT.Classes
 
         public virtual void Output()
         {
+            Console.ForegroundColor = ConsoleColor.Green; // устанавливаем цвет
+
             Console.WriteLine($"Окружность с центром в точке ({_center.Item1},{_center.Item2}) и радиусом {_radius}\n" +
                 $"Длина окружности: {Length}");
+            Console.ResetColor(); // сбрасываем в стандартный
         }
 
         public void SetParam()
