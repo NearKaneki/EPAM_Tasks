@@ -1,62 +1,34 @@
-﻿using _2._1._2._CUSTOM_PAINT.Interfaces;
-
-namespace _2._1._2._CUSTOM_PAINT.Classes
+﻿namespace _2._1._2._CUSTOM_PAINT.Classes
 {
     public class User
     {
-        private string _name;
-        private IList<IFigure> _array;
+        public string Name { get; init; }
+        private List<Figure> _array;
 
-        public string Name=>_name ;
-
-        public User (string name)
+        public User(string name)
         {
-            _name = name;
-            _array = new List<IFigure>();
+            Name = name;
+            _array = new List<Figure>();
         }
 
-        public void GetInfo()
+        public override string ToString()
         {
-            foreach(var figure in _array)
+            string temp = "";
+            foreach (var figure in _array)
             {
-                figure.Output();
+                temp += figure;
             }
+            return temp;
         }
-        
+
         public void Clear()
         {
             _array.Clear();
         }
 
-        public void AddFigure(Figures figure)
+        public void AddFigure(Figure figure)
         {
-            IFigure temp = SwitchFigure(figure);
-            temp.SetParam();
-            _array.Add(temp);
+            _array.Add(figure);
         }
-
-        private IFigure SwitchFigure(Figures figure) => figure switch
-        {
-            Figures.Circle => new Circle(),
-            Figures.Round => new Round(),
-            Figures.Ring => new Ring(),
-            Figures.Line => new Line(),
-            Figures.Triangle => new Triangle(),
-            Figures.Rectangle => new Rectangle(),
-            Figures.Square => new Square(),
-        };
-
-        public enum Figures
-        {
-            //None=0,
-            Circle=1,
-            Round=2,
-            Ring=3,
-            Line=4,
-            Triangle=5,
-            Rectangle=6,
-            Square =7
-        }
-
     }
 }

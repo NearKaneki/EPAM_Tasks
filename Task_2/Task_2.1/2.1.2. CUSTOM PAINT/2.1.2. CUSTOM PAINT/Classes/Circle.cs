@@ -1,32 +1,23 @@
-﻿using _2._1._2._CUSTOM_PAINT.Interfaces;
-
-namespace _2._1._2._CUSTOM_PAINT.Classes
+﻿namespace _2._1._2._CUSTOM_PAINT.Classes
 {
-    public class Circle:IFigure
+    public class Circle : Figure
     {
-        public (int,int) _center;
-        public int _radius;
-        public double Length =>2*Math.PI*_radius;
+        public int Radius { get; init; }
+        public override (double, double) Center { get; init; }
+        public double Length => 2 * Math.PI * Radius;
 
-        public Circle() { }
-
-        public virtual void Output()
+        public Circle((int, int) c, int r)
         {
-            Console.ForegroundColor = ConsoleColor.Green; // устанавливаем цвет
-
-            Console.WriteLine($"Окружность с центром в точке ({_center.Item1},{_center.Item2}) и радиусом {_radius}\n" +
-                $"Длина окружности: {Length}");
-            Console.ResetColor(); // сбрасываем в стандартный
+            Radius = r;
+            Center = c;
         }
 
-        public void SetParam()
+        public override string ToString()
         {
-            Console.Write("Введите координаты центра (x y): ");
-            string[] coords = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            bool success = int.TryParse(coords[0], out _center.Item1);
-            success = int.TryParse(coords[1], out _center.Item2);
-            Console.Write("Введите радиус: ");
-            success = int.TryParse(Console.ReadLine(), out _radius);
+            return $"Окружность{Environment.NewLine}" +
+                $"Центр: {Center}{Environment.NewLine}" +
+                $"Радиус: {Radius}{Environment.NewLine}" +
+                $"Длина окружности: {Math.Round(Length, 2)}{Environment.NewLine}";
         }
     }
 }

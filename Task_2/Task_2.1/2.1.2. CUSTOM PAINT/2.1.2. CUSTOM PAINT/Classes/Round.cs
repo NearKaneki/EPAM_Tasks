@@ -1,16 +1,18 @@
 ﻿namespace _2._1._2._CUSTOM_PAINT.Classes
 {
-    public class Round:Circle
+    public class Round : Circle
     {
-        public Round() { }
+        public double Area => Math.PI * Math.Pow(Radius, 2);
 
-        public double Area =>Math.PI*Math.Pow(_radius,2); 
+        public Round((int, int) c, int r) : base(c, r) { }
 
-        public override void Output()
+        public override string ToString()
         {
-            Console.WriteLine($"Круг с центром в точке ({_center.Item1},{_center.Item2}) и радиусом {_radius}\n" +
-    $"Длина окружности: {Length}\n" +
-    $"Площадь: {Area}");
+            return $"Круг{Environment.NewLine}" +
+                $"Центр: {Center}{Environment.NewLine}" +
+                $"Радиус: {Radius}{Environment.NewLine}" +
+                $"Длина окружности: {Math.Round(Length, 2)}{Environment.NewLine}" +
+                $"Площадь круга: {Area}{Environment.NewLine}";
         }
     }
 }

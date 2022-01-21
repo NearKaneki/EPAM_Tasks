@@ -1,31 +1,28 @@
-﻿using _2._1._2._CUSTOM_PAINT.Interfaces;
-
-namespace _2._1._2._CUSTOM_PAINT.Classes
+﻿namespace _2._1._2._CUSTOM_PAINT.Classes
 {
-    public class Ring : IFigure
+    public class Ring : Figure
     {
-        private Round _inside;
-        private Round _outside;
+        public Round Inside { get; init; }
+        public Round Outside { get; init; }
+        public override (double, double) Center { get; init; }
+        public double SumLength => Inside.Length + Outside.Length;
+        public double Area => Outside.Area - Inside.Area;
 
-        public double SumLength =>_inside.Length+_outside.Length; 
-        public double Area =>_outside.Area-_inside.Area; 
-
-        public Ring() { }
-
-        public void Output()
+        public Ring((int, int) c1, int r1, int r2)
         {
-            throw new NotImplementedException();
+            Inside = new Round(c1, r1);
+            Outside = new Round(c1, r2);
+            Center = c1;
         }
 
-        public void SetParam()
+        public override string ToString()
         {
-            Console.Write("Введите координаты центра внутренней окружности (x y): ");
-            string[] coords = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
-            bool success = int.TryParse(coords[0], out _inside._center.Item1);
-            success = int.TryParse(coords[1], out _inside._center.Item2);
-            Console.Write("Введите радиус внутренней окружности: ");
-            success = int.TryParse(Console.ReadLine(), out _inside._radius);
-            //Доделать
+            return $"Кольцо{Environment.NewLine}" +
+                $"Центр: {Center}{Environment.NewLine}" +
+                $"Внутренний радиус: {Inside.Radius}{Environment.NewLine}" +
+                $"Внешний радиус: {Outside.Radius}{Environment.NewLine}" +
+                $"Суммарная длина кольца: {Math.Round(SumLength, 2)}{Environment.NewLine}" +
+                $"Площадь кольца: {Area}{Environment.NewLine}";
         }
     }
 }

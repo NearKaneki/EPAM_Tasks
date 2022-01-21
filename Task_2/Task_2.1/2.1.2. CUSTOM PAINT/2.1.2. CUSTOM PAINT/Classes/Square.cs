@@ -1,19 +1,21 @@
-﻿using _2._1._2._CUSTOM_PAINT.Interfaces;
-
-namespace _2._1._2._CUSTOM_PAINT.Classes
+﻿namespace _2._1._2._CUSTOM_PAINT.Classes
 {
-    public class Square:Rectangle
+    public class Square : Rectangle
     {
-        public Square() { }
-
-        public override void Output()
+        public Square((int, int) p1, (int, int) p2, (int, int) p3) : base(p1, p2, p3)
         {
-            throw new NotImplementedException();
+            if (_a.Length != _b.Length)
+            {
+                throw new ArgumentException("Стороны не равны");
+            }
         }
-
-        public override void SetParam()
+        public override string ToString()
         {
-            throw new NotImplementedException();
+            return $"Квадрат{Environment.NewLine}" +
+                $"Длина стороны: {_a.Length}{Environment.NewLine}" +
+                $"Центр: {Center}{Environment.NewLine}" +
+                $"Периметр: {Math.Round(Perimeter, 2)}{Environment.NewLine}" +
+                $"Площадь: {Math.Round(Area, 2)}{Environment.NewLine}";
         }
     }
 }
