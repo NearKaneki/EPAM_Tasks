@@ -75,14 +75,20 @@ namespace CustomArrayEPAM
 
         public void Add(T item)
         {
-            isNeededCapacity(1);
+            if (isNeededCapacity(1))
+            {
+                Resize(Count + 1 - _array.Count());
+            };
             _array[Count] = item;
             ++Count;
         }
 
         public void AddRange(IEnumerable<T> addArray)
         {
-            isNeededCapacity(addArray.Count());
+            if (isNeededCapacity(addArray.Count()))
+            {
+                Resize(Count + addArray.Count() - _array.Count());
+            };
             _array.Concat(addArray);
             Count += addArray.Count();
         }
@@ -97,21 +103,21 @@ namespace CustomArrayEPAM
             {
                 throw new ArgumentException("Index must be positiv");
             }
-            isNeededCapacity(1);
-            for (int i = Count; i > ind; i--)
+            if (isNeededCapacity(1))
             {
-                _array[i] = _array[i - 1];
-            }
+                Resize(Count + 1 - _array.Count());
+            };
             _array[ind] = item;
             ++Count;
         }
 
-        private void isNeededCapacity(int length)
+        private bool isNeededCapacity(int length)
         {
             if (Count + length > _array.Count())
             {
-                Resize(Count + length - _array.Count());
+                return true;
             }
+            return false;
         }
 
         private void Resize(int neededSpace)
