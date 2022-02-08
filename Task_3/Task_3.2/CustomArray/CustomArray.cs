@@ -180,7 +180,7 @@ namespace CustomArrayEPAM
 
         public object Clone()
         {
-            return _array;
+            return _array.Clone;
         }
     }
 }
