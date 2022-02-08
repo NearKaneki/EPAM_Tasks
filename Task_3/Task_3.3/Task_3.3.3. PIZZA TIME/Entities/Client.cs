@@ -2,7 +2,6 @@
 {
     public class Client
     {
-
         public string Name { get; init; }
 
         public Client(string name)
@@ -12,14 +11,14 @@
 
         public void MakeOrder(PizzaType pizzaType)
         {
-            OrderTable.MakeOrder(this,pizzaType);
-            Pizzeria.PizzaIsCooked += TakePizza;
+            OrderTable.MakeOrder(this, pizzaType);
+            OrderTable.TakeOrder += TakePizza;
         }
 
         private void TakePizza()
         {
-            Console.WriteLine("Client picked up the order");
-            Pizzeria.PizzaIsCooked -= TakePizza;
+            Console.WriteLine($"{Name} picked up the order");
+            OrderTable.TakeOrder -= TakePizza;
         }
     }
 }

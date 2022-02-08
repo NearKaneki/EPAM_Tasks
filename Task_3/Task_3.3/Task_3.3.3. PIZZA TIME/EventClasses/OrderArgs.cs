@@ -2,14 +2,14 @@
 
 namespace Task_3._3._3._PIZZA_TIME.EventClasses
 {
-    public class OrderArgs:EventArgs
+    public class OrderArgs : EventArgs
     {
-        public string CustomerName { get; }
+        public int ID { get; }
         public PizzaType TypePizza { get; }
 
-        public OrderArgs(string customerName, PizzaType pizzaType)
+        public OrderArgs(int ID, PizzaType pizzaType)
         {
-            CustomerName = customerName;
+            this.ID = ID;
             this.TypePizza = pizzaType;
         }
     }
