@@ -12,12 +12,14 @@
 
         public void MakeOrder(PizzaType pizzaType)
         {
-            OrderTable.NewOrder();
+            OrderTable.MakeOrder(this,pizzaType);
+            Pizzeria.PizzaIsCooked += TakePizza;
         }
 
-        public void PickUpOrder()
+        private void TakePizza()
         {
-
+            Console.WriteLine("Client picked up the order");
+            Pizzeria.PizzaIsCooked -= TakePizza;
         }
     }
 }

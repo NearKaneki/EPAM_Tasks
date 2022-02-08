@@ -8,6 +8,7 @@ namespace Task_3._3._3._PIZZA_TIME.Entities
 
         public static void MakeOrder(Client client, PizzaType TypePizza)
         {
+            Console.WriteLine("Order is accepted");
             NewOrder?.Invoke(client, new OrderArgs(client.Name, TypePizza));
         }
 
