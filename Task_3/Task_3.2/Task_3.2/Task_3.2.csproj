@@ -8,4 +8,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="CustomArrayEPAM">
+      <HintPath>..\CustomArray\bin\Debug\net6.0\CustomArrayEPAM.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>

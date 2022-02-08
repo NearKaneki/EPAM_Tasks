@@ -9,8 +9,8 @@ namespace CustomArrayEPAM
 
         public int Capacity
         {
-            get => _array.Count(); 
-            set 
+            get => _array.Count();
+            set
             {
                 if (value < 0)
                 {
@@ -24,7 +24,7 @@ namespace CustomArrayEPAM
         {
             get
             {
-                if (index >= Count || index<=-Count)
+                if (index >= Count || index <= -Count)
                 {
                     throw new ArgumentOutOfRangeException();
                 }
@@ -168,14 +168,14 @@ namespace CustomArrayEPAM
             return _array[0..Count];
         }
 
-        public IEnumerator<T> GetEnumerator()
+        public virtual IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new EnumeratorArray<T>(_array[0..Count]);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
+        IEnumerator  IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new EnumeratorArray<T>(_array[0..Count]);
         }
 
         public object Clone()
