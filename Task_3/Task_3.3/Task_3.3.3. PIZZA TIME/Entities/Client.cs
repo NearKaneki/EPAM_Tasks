@@ -10,9 +10,9 @@
         }
 
         public void MakeOrder(PizzaType pizzaType)
-        {            
+        {
             OrderTable.TakeOrder += TakePizza;
-            OrderTable.MakeOrder(Name,pizzaType);
+            OrderTable.MakeOrder(Name, pizzaType);
 
         }
 

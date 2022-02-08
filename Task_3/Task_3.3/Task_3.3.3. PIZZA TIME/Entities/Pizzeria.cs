@@ -6,7 +6,7 @@ namespace Task_3._3._3._PIZZA_TIME.Entities
     {
         static public event EventHandler<OrderArgs>? EndCooked;
 
-        static public void ConfirmOrder(int id,PizzaType pizzaType)
+        static public void ConfirmOrder(int id, PizzaType pizzaType)
         {
             Cooking(id, pizzaType);
         }
