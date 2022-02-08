@@ -6,20 +6,20 @@ namespace Task_3._3._3._PIZZA_TIME.Entities
     {
         static public event EventHandler<OrderArgs>? EndCooked;
 
-        static public void ConfirmOrder(object sender, OrderArgs orderArgs)
+        static public void ConfirmOrder(int id,PizzaType pizzaType)
         {
-            Cooking(orderArgs.ID, orderArgs.TypePizza);
+            Cooking(id, pizzaType);
         }
 
-        static public void Cooking(int ID, PizzaType pizzaType)
+        static private void Cooking(int id, PizzaType pizzaType)
         {
             Thread.Sleep(TimeSpan.FromSeconds(5));
-            GiveOrder(ID, pizzaType);
+            GiveOrder(id, pizzaType);
         }
 
-        static public void GiveOrder(int ID, PizzaType pizzaType)
+        static private void GiveOrder(int id, PizzaType pizzaType)
         {
-            EndCooked?.Invoke(null, new OrderArgs(ID, pizzaType));
+            EndCooked?.Invoke(null, new OrderArgs(id, pizzaType));
         }
     }
 }
