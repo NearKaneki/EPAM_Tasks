@@ -38,7 +38,7 @@ for (int i = 1; i <= numberPeople - strikeoutNumber + 1; i++)
 
 Console.WriteLine("Game over. Can’t rule out more people.");
 
-static void CheckInput(out int temp,string item)
+static void CheckInput(out int temp, string item)
 {
     while (!int.TryParse(Console.ReadLine(), out temp))
     {
