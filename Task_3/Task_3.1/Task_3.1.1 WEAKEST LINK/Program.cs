@@ -3,10 +3,7 @@ int numberPeople = 0;
 while (numberPeople == 0)
 {
     int temp;
-    while (!int.TryParse(Console.ReadLine(), out temp))
-    {
-        Console.Write("Wrong input. Input number of people: ");
-    }
+    CheckInput(out temp, "number of people");
     if (temp <= 0)
     {
         Console.Write("Number of people must be positive. Input number of people: ");
@@ -20,10 +17,7 @@ int strikeoutNumber = 0;
 while (strikeoutNumber == 0)
 {
     int temp;
-    while (!int.TryParse(Console.ReadLine(), out temp))
-    {
-        Console.Write("Wrong input. Input strikeout number: ");
-    }
+    CheckInput(out temp, "strikeout number");
     if (temp > numberPeople)
     {
         Console.Write("Strikeout number greater than number of people. Input strikeout number: ");
@@ -44,3 +38,10 @@ for (int i = 1; i <= numberPeople - strikeoutNumber + 1; i++)
 
 Console.WriteLine("Game over. Can’t rule out more people.");
 
+static void CheckInput(out int temp,string item)
+{
+    while (!int.TryParse(Console.ReadLine(), out temp))
+    {
+        Console.Write($"Wrong input. Input {item}: ");
+    }
+}
