@@ -4,9 +4,6 @@
     {
         public override ConsoleColor Color { get; } = ConsoleColor.White;
         public override char Name { get; } = ' ';
-        public Nothing(int x, int y)
-        {
-            Coord = new Point(x, y);
-        }
+        public Nothing(int x, int y) : base(x, y) { }
     }
 }

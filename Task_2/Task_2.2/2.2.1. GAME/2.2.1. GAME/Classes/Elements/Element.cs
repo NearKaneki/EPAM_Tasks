@@ -5,5 +5,10 @@
         public Point Coord { get; protected set; }
         public virtual ConsoleColor Color { get; }
         public virtual char Name { get; }
+
+        public Element(int x, int y)
+        {
+            Coord = new Point(x, y);
+        }
     }
 }

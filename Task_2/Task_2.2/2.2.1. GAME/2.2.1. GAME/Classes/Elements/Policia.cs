@@ -4,9 +4,6 @@
     {
         public override ConsoleColor Color { get; } = ConsoleColor.Blue;
         public override char Name { get; } = 'P';
-        public Policia(int x, int y)
-        {
-            Coord = new Point(x, y);
-        }
+        public Policia(int x, int y) : base(x, y) { }
     }
 }
