@@ -6,42 +6,40 @@
         private char[] _charArray;
         private int _count;
 
-        public int Count {get => _count; }
-        
-        public int Capacity { get => _charArray.Length; }
+        public int Count => _count;
 
-        public char[] CharArray { get => _charArray[0.._count]; }
+        public int Capacity => _charArray.Length;
+
+        public char[] CharArray => _charArray[0.._count];
 
         public char this[int index]
         {
             get
             {
-                if (index <0)
-                {
-                    throw new ArgumentException("Index must be non negative");
-                }
-                if (index >= Count)
-                {
-                    throw new ArgumentException("Index is more than length string");
-                }
+                CheckIndexErrors(index);
                 return _charArray[index];
             }
 
             set
             {
-                if (index < 0)
-                {
-                    throw new ArgumentException("Index must be non negative");
-                }
-                if (index >= Count)
-                {
-                    throw new ArgumentException("Index is more than length string");
-                }
+                CheckIndexErrors(index);
                 _charArray[index] = value;
             }
         }
 
-        public CustomString(string startString,int startCapacity)
+        private void CheckIndexErrors(int index)
+        {
+            if (index < 0)
+            {
+                throw new ArgumentException("Index must be non negative");
+            }
+            if (index >= Count)
+            {
+                throw new ArgumentException("Index is more than length string");
+            }
+        }
+
+        public CustomString(string startString, int startCapacity)
         {
             if (startCapacity < 0)
             {
@@ -57,10 +55,10 @@
             }
             _count = startString.Length;
             _charArray = new char[startCapacity];
-            startString.ToArray().CopyTo(_charArray,0);
+            startString.ToArray().CopyTo(_charArray, 0);
         }
 
-        public CustomString():this(_defaultCapacity){}
+        public CustomString() : this(_defaultCapacity) { }
 
         public CustomString(int startCapacity) : this(String.Empty, startCapacity) { }
 
@@ -84,33 +82,35 @@
 
         public void Append(char element)
         {
-            isNeededCapacity(1);
+            if (isNeededCapacity(1))
+            {
+                Resize(_count + 1 - Capacity);
+            }
             _charArray[_count] = element;
             ++_count;
         }
         public void Append(string input)
         {
-            isNeededCapacity(input.Length);
+            if (isNeededCapacity(input.Length))
+            {
+                Resize(_count + input.Length - Capacity);
+            }
             input.ToArray().CopyTo(_charArray, _count);
-            _count+=input.Length;
+            _count += input.Length;
         }
 
-        public void Insert(char element,int index)
+        public void Insert(char element, int index)
         {
-            if (index < 0)
-            {
-                throw new ArgumentException("Index must be non negative");
-            }
             if (index == Count)
             {
                 throw new ArgumentException("Use append");
             }
-            if (index >= Count)
+            CheckIndexErrors(index);
+            if (isNeededCapacity(1))
             {
-                throw new ArgumentException("Index out of range");
+                Resize(_count + 1 - Capacity);
             }
-            isNeededCapacity(1);
-            for (int i = _count; i > index ; i--)
+            for (int i = _count; i > index; i--)
             {
                 _charArray[i] = _charArray[i - 1];
             }
@@ -125,13 +125,16 @@
             }
             if (index == Count)
             {
-                throw new ArgumentException("Use append");
+                Append(input);
             }
             if (index > Count)
             {
                 throw new ArgumentException("Index out of range");
             }
-            isNeededCapacity(input.Length);
+            if (isNeededCapacity(input.Length))
+            {
+                Resize(_count + input.Length - Capacity);
+            }
             //for (int i = _count+input.Length-1; i > index; i--)
             //{
             //    _charArray[i] = _charArray[i - input.Length];
@@ -145,16 +148,9 @@
             _count += input.Length;
         }
 
-        public void Remove(int index,int length)
+        public void Remove(int index, int length)
         {
-            if (index < 0)
-            {
-                throw new ArgumentException("Index must be non negative");
-            }
-            if (index > Count)
-            {
-                throw new ArgumentException("Index out of range");
-            }
+            CheckIndexErrors(index);
             char[] temp = new char[Capacity];
             _charArray[0..index].CopyTo(temp, 0);
             int startPos = index + length;
@@ -169,7 +165,7 @@
             for (int i = 0; i <= _count - input.Length; i++)
             {
                 int endSlice = i + input.Length;
-                if (_charArray[i..endSlice].SequenceEqual(temp)) 
+                if (_charArray[i..endSlice].SequenceEqual(temp))
                 {
                     return i;
                 }
@@ -179,7 +175,7 @@
 
         public int FindFirstChar(char input)
         {
-            return(Array.FindIndex(_charArray,x=>x==input));
+            return (Array.FindIndex(_charArray, x => x == input));
         }
 
         private int FindString(string input, ref int index)
@@ -204,30 +200,34 @@
                 throw new Exception("Arguments must not be equals");
             }
             int index = 0;
-            while (FindString(oldValue,ref index)!=-1)
+            while (FindString(oldValue, ref index) != -1)
             {
                 if (oldValue.Length < newValue.Length)
                 {
-                    isNeededCapacity(newValue.Length-oldValue.Length);
+                    if (isNeededCapacity(newValue.Length - oldValue.Length))
+                    {
+                        Resize(_count + newValue.Length - oldValue.Length - Capacity);
+                    }
                 }
                 char[] temp = new char[Capacity];
                 _charArray[0..index].CopyTo(temp, 0);
                 newValue.ToArray().CopyTo(temp, index);
                 int startPos = index + oldValue.Length;
-                _charArray[startPos.._count].CopyTo(temp, index+newValue.Length);
+                _charArray[startPos.._count].CopyTo(temp, index + newValue.Length);
                 _charArray = temp;
                 _count = _count - oldValue.Length + newValue.Length;
             }
         }
 
-        private void isNeededCapacity(int length)
+        private bool isNeededCapacity(int length)
         {
-            if (_count + length >Capacity)
+            if (_count + length > Capacity)
             {
-                Resize(_count+length-Capacity);
+                return true;
             }
+            return false;
         }
-        
+
         private void Resize(int neededSpace)
         {
             int startCapacity = Capacity;
@@ -247,7 +247,7 @@
             }
             Array.Resize(ref _charArray, Capacity + AddCapacity);
         }
-        
+
         public bool Equal(CustomString obj)
         {
             return _charArray[0.._count].SequenceEqual(obj._charArray[0..obj._count]);
