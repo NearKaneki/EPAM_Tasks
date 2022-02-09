@@ -36,6 +36,10 @@ namespace CustomArrayEPAM
             }
             set
             {
+                if (value == null)
+                {
+                    throw new ArgumentNullException();
+                }
                 if (index >= Count || index <= -Count)
                 {
                     throw new ArgumentOutOfRangeException();
@@ -63,6 +67,10 @@ namespace CustomArrayEPAM
 
         public CustomArray(IEnumerable<T> initArray)
         {
+            if (initArray == null)
+            {
+                throw new ArgumentNullException();
+            }
             _array = new T[initArray.Count()];
             int count = 0;
             foreach (var item in initArray)
@@ -75,6 +83,10 @@ namespace CustomArrayEPAM
 
         public void Add(T item)
         {
+            if (item == null)
+            {
+                throw new ArgumentNullException();
+            }
             if (isNeededCapacity(1))
             {
                 Resize(Count + 1 - _array.Count());
@@ -85,6 +97,10 @@ namespace CustomArrayEPAM
 
         public void AddRange(IEnumerable<T> addArray)
         {
+            if (addArray == null)
+            {
+                throw new ArgumentNullException();
+            }
             if (isNeededCapacity(addArray.Count()))
             {
                 Resize(Count + addArray.Count() - _array.Count());
@@ -95,6 +111,10 @@ namespace CustomArrayEPAM
 
         public void Insert(T item, int ind)
         {
+            if (item == null)
+            {
+                throw new ArgumentNullException();
+            }
             if (ind > Count)
             {
                 throw new ArgumentOutOfRangeException();
@@ -173,7 +193,7 @@ namespace CustomArrayEPAM
             return new EnumeratorArray<T>(_array[0..Count]);
         }
 
-        IEnumerator  IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return new EnumeratorArray<T>(_array[0..Count]);
         }
