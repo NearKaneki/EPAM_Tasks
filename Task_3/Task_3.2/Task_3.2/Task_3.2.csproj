@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>Task_3._2</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="CustomArrayEPAM">
+      <HintPath>..\CustomArray\bin\Debug\net6.0\CustomArrayEPAM.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
