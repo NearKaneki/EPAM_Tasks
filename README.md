@@ -54,7 +54,7 @@
             <h3>Experience</h3>
             <a>
                 Work with AngleSharp, ML.NET, ASP.NET.
-                Work on 3 student project with ASP.NET.
+                Work on 3 student project with ASP.NET WEB.API.
             </a>
             <h3>Languages</h3>
             <a>
