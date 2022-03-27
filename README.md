@@ -19,10 +19,14 @@
                 E-mail: <a href="mailto:near55@yandex.ru">near55@yandex.ru</a>
             </a>
             <h2>About me</h2>
+            <a>
+                I am 3rd year student of the Faculty of Computer Science and Information Technologies of Saratov State University. Disciplined, conscientious and 
+                responsible employee. I've involved in team projects many times so I am confident about my ability to build solid relationships with teammates
+                and future business partners.
+            </a>
             <h3>Education</h3>
             <a>
-                2019 - 2023   Saratov State University on the department of
-                Computer Science and Information Technologies.
+                2019 - 2023   Saratov State University. Bachelor of Computer Science and Information Technologies. 
             </a>
             <h3>Programming skills</h3>
             <ul>
