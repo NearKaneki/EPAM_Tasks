@@ -46,14 +46,6 @@
                     Python </br>
                     <progress max="100" value="30"></progress>
                 </li>
-                <li>
-                    Java </br>
-                    <progress max="100" value="30"></progress>
-                </li>
-                <li>
-                    C++ </br>
-                    <progress max="100" value="10"></progress>
-                </li>
             </ul>
             <h3>Experience</h3>
             <a>
