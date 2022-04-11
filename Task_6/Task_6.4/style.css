@@ -1,0 +1,38 @@
+﻿body {
+    background-color: #4A5F74;
+}
+
+.form {
+    margin: 0 auto;
+    text-align: center;
+    width: 600px;
+    background-color: white;
+    border-radius: 4px;
+    box-shadow: #303D4B 0px 15px 15px;
+}
+
+.Hosting, .Cloud, .Server {
+    padding: 10px;
+    display: inline-block;
+    width: 170px;
+}
+
+.Hosting, .Cloud {
+    border-right: 1px solid #D9D9D9;
+}
+
+img {
+    height: 50px;
+}
+
+h4 {
+    color: #F56332;
+}
+
+button {
+    padding: 5px;
+    color: white;
+    background: #F56332;
+    border: none;
+    border-radius: 2px;
+}
