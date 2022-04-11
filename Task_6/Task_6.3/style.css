@@ -1,0 +1,27 @@
+﻿body{
+    background-color:gray;
+}
+div {
+    position: relative;
+    top: 40px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    background-color: #88B7D5;
+    border: 5px solid #C2E1F5;
+    font-size: 30px;
+}
+    div::after {
+        content: '';
+        position: absolute;
+        background-color: #88B7D5;
+        left: 50%;
+        top: -26px;
+        width: 40px;
+        height: 40px;
+        border-top: 5px solid #C2E1F5;
+        border-right: 5px solid #C2E1F5;
+        transform: rotate(-45deg);
+    }
+
+
