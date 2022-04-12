@@ -39,10 +39,6 @@
                     <progress max="100" value="60"></progress>
                 </li>
                 <li>
-                    IIS </br>
-                    <progress max="100" value="30"></progress>
-                </li>
-                <li>
                     Python </br>
                     <progress max="100" value="30"></progress>
                 </li>
