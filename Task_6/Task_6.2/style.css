@@ -1,12 +1,12 @@
-﻿form {
-    width: 430px;
+﻿.form {
+    width: 410px;
     margin: 20px;
     background: #0690CF;
     border: 3px solid #0075B2;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-h1 {
+.form_header_h1 {
     color: white;
     padding: 0px 20px;
 }
@@ -16,24 +16,43 @@ hr {
     padding: 0px;
 }
 
-input[name=email] {
-    width: 350px
-}
-
-p {
-    padding: 0px 20px;
+.form_input_label {
     color: white;
-    font-size: 18px;
 }
 
-a[name=passRe] {
-    padding: 115px;
+.form_input_email {
+    flex-direction: column;
+    display: flex;
+    padding: 10px 20px;
 }
 
-input[type=submit] {
-    margin: 5px 0px 20px 20px;
-    padding: 6px 10px;
-    background: #FFDF7F;
+.form_input_password {
+    display: flex;
+    padding: 10px 0px 10px 20px;
+    flex-direction: row;
+}
+
+.form_input_submit {
+    margin: 20px;
+    padding: 5px;
+    background-color: #FFDF7F;
     border: none;
-    color: black;
+    border-radius: 2px;
+}
+
+@media screen and (max-width: 444px) {
+    .form {
+        width: 300px;
+    }
+
+    .form_input_password {
+        flex-direction: column;
+    }
+
+    .form_input_password_1,
+    .form_input_password_2 {
+        display: flex;
+        flex-direction: column;
+        padding: 0px 20px 10px 0px;
+    }
 }

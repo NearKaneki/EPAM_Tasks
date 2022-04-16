@@ -8,21 +8,28 @@
     <title>Регистрация</title>
 </head>
 <body>
-    <form>
-        <h1>Регистрация</h1>
+    <form class="form">
+        <div class="form_header">
+            <h1 class="form_header_h1">Регистрация</h1>
+        </div>
         <hr>
-        <p name="e-mail">
-            <a name="e-mail">E-mail</a><br>
-            <input name="email" required>
-        </p>
-        <p name="password">
-            <a name="pass">Пароль</a>
-            <a name="passRe">Еще раз</a>
-            <br>
-            <input name="password" required>
-            <input name="passwordRe" required>
-        </p>
-        <input type="submit" value="Отправить">
+        <div class="form_input">
+            <div class="form_input_email">
+                <label for="input_email" class="form_input_label">E-mail</label>
+                <input name="input_email" class="form_input_email_input" type="email" required />
+            </div>
+            <div class="form_input_password">
+                <div class="form_input_password_1">
+                    <label for="input_password1" class="form_input_label">Пароль</label>
+                    <input name="input password1" class="form_input_password_input" type="password" required />
+                </div>
+                <div class="form_input_password_2">
+                    <label for="input_password2" class="form_input_label">Еще раз</label>
+                    <input name="input password2" class="form_input_password_input" type="password" required />
+                </div>
+            </div>
+            <input name="submit" class="form_input_submit" type="submit" value="Отправить" />
+        </div>
     </form>
 </body>
 </html>
