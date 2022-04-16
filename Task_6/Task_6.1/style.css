@@ -1,4 +1,4 @@
-﻿ul {
+﻿.menu {
     width: 200px;
     padding: 5px;
     margin: 50px;
@@ -10,11 +10,11 @@
     line-height: 1.5;
 }
 
-    ul a {
-        text-decoration: none;
-        color: #880000;
-    }
+.menu_item a {
+    text-decoration: none;
+    color: #880000;
+}
 
-        ul a:hover {
-            text-decoration: underline;
-        }
+    .menu_item a:hover {
+        text-decoration: underline;
+    }
